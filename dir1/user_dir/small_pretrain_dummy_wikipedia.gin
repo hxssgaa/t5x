@@ -14,7 +14,7 @@
 
 from __gin__ import dynamic_registration
 
-from t5x import partitioning
+from t5x import partitioning, trainer
 
 from t5x.examples.t5 import network
 
