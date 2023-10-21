@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "train",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/hxssgaa/t5x/t5x/train.py",
+            "args": [
+                "--gin_search_paths=/home/hxssgaa/t5x/dir1/user_dir",
+                "--gin_file=small_pretrain_dummy_wikipedia.gin",
+                "--gin.MODEL_DIR=\"/home/hxssgaa/model\"",
+                "--tfds_data_dir=/home/hxssgaa/data"
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "/home/hxssgaa/t5x/dir1/user_dir"
+            },
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
