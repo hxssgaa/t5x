@@ -4,9 +4,9 @@ USE_CACHED_TASKS = False
 
 utils.SaveCheckpointConfig:
   period = 6000
-  dtype = 'float32'
+  dtype = 'bfloat16'
   keep = 2  # keep 2 checkpoints
-  save_dataset = True  # checkpoint dataset state
+  save_dataset = False  # checkpoint dataset state
 
 # This scheduler is made with adam in mind. Use the scheduler from pretrain.gin if using adafactor
 utils.create_learning_rate_scheduler:
