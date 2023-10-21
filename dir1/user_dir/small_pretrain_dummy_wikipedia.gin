@@ -35,4 +35,4 @@ BATCH_SIZE = 512
 USE_CACHED_TASKS=False
 
 partitioning.PjitPartitioner:
-    num_partitions=4
+    num_partitions=16
