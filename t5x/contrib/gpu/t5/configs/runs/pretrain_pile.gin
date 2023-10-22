@@ -3,7 +3,7 @@ include 't5x/contrib/gpu/t5/configs/runs/pretrain.gin'
 USE_CACHED_TASKS = False
 
 utils.SaveCheckpointConfig:
-  period = 6000
+  period = 2000
   dtype = 'bfloat16'
   keep = 2  # keep 2 checkpoints
   save_dataset = False  # checkpoint dataset state
