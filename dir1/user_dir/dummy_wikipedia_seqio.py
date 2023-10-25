@@ -26,7 +26,7 @@ TaskRegistry.add(
             }),
         seqio.preprocessors.tokenize,
         seqio.CacheDatasetPlaceholder(),
-        preprocessors.unsupervised,
+        preprocessors.span_corruption,
         seqio.preprocessors.append_eos_after_trim,
     ],
     output_features=DEFAULT_OUTPUT_FEATURES,

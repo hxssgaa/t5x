@@ -29,14 +29,14 @@ import t5.data.mixtures
 import dummy_wikipedia_seqio
 
 MIXTURE_OR_TASK_NAME = "wikipedia_dummy"
-TASK_FEATURE_LENGTHS = {"inputs": 1024, "targets": 256}
+TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 128}
 TRAIN_STEPS = 80000
 DROPOUT_RATE = 0.1
 BATCH_SIZE = 2048
 USE_CACHED_TASKS=False
 
 trainer.Trainer:
-    num_microbatches = 32
+    num_microbatches = 16
 
 partitioning.PjitPartitioner:
     num_partitions=2
