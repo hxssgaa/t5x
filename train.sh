@@ -10,7 +10,7 @@ python3 ${T5X_DIR}/t5x/train.py \
   --gin_file="small_pretrain_dummy_wikipedia.gin" \
   --gin.MODEL_DIR=\"${MODEL_DIR}\" \
   --gin.ACTIVATION_DTYPE=\"${ACTIVATION_DTYPE}\" \
-  --gin.network.T5Config.dtype=\"${ACTIVATION_DTYPE}\" \
-  --gin.network.T5Config.remat_policy=\"minimal\" \
+  --gin.t5x.examples.scalable_t5.network.T5Config.dtype=\"${ACTIVATION_DTYPE}\" \
+  --gin.t5x.examples.scalable_t5.network.T5Config.remat_policy=\"minimal\" \
   --gin.utils.RestoreCheckpointConfig.dtype=\"${ACTIVATION_DTYPE}\" \
   --gin.DROPOUT_RATE=0.0
