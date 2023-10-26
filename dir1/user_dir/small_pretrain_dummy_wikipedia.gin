@@ -38,5 +38,9 @@ USE_CACHED_TASKS=False
 trainer.Trainer:
     num_microbatches = 32
 
+partitioning.standard_logical_axis_rules:
+  activation_partitioning_dims = 2
+  parameter_partitioning_dims = 2
+
 partitioning.PjitPartitioner:
-    num_partitions=16
+    num_partitions=8
