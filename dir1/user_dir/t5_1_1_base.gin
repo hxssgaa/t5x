@@ -8,7 +8,7 @@ from t5x import models
 
 ARCHITECTURE = %gin.REQUIRED
 
-include 'flaxformer/t5x/configs/t5/architectures/t5_1_1_flaxformer.gin'
+include 'dir1/user_dir/t5_1_1_flaxformer.gin'
 
 # Architecture overrides
 NUM_ENCODER_LAYERS = 12
