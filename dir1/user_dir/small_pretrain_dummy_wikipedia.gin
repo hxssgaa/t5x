@@ -36,11 +36,11 @@ BATCH_SIZE = 2048
 USE_CACHED_TASKS=False
 
 trainer.Trainer:
-    num_microbatches = 8
+    num_microbatches = 4
 
 partitioning.standard_logical_axis_rules:
-    activation_partitioning_dims = 2
-    parameter_partitioning_dims = 2 
+    activation_partitioning_dims = 1
+    parameter_partitioning_dims = 1
 
 partitioning.PjitPartitioner:
     num_partitions = 2
