@@ -44,7 +44,7 @@ partitioning.standard_logical_axis_rules:
     parameter_partitioning_dims = 2 
 
 partitioning.PjitPartitioner:
-    model_parallel_submesh = (1, 1, 4, 1)
+    model_parallel_submesh = (1, 2, 4, 1)
 
 adafactor.Adafactor:
   logical_factor_rules = @adafactor.standard_logical_factor_rules()
