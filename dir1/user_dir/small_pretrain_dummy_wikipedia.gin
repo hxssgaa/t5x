@@ -36,7 +36,7 @@ BATCH_SIZE = 2048
 USE_CACHED_TASKS=False
 
 trainer.Trainer:
-    num_microbatches = 32
+    num_microbatches = 16
 
 partitioning.PjitPartitioner:
     num_partitions=8
