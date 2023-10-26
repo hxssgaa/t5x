@@ -1,4 +1,4 @@
-PROJECT_DIR=${HOME}"/t5x/dir1/user_dir,/home/hxssgaa/flaxformer"
+PROJECT_DIR=${HOME}"/t5x/dir1/user_dir"
 T5X_DIR="/home/hxssgaa/t5x"  # directory where the t5x is cloned.
 TFDS_DATA_DIR="/home/hxssgaa/data"
 MODEL_DIR="gs://hxtpu_bucket/t5_2048"
