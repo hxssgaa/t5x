@@ -23,6 +23,7 @@ from t5x.examples.t5 import network
 
 # include "t5x/contrib/gpu/t5/t5_1_1/xl.gin"
 include "dir1/user_dir/t5_1_1_xl.gin"
+include "dir1/user_dir/flash_attention.gin"
 include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
 include "t5x/contrib/gpu/t5/configs/runs/pretrain_pile.gin"
 
