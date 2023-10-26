@@ -19,8 +19,7 @@ from t5x import trainer
 
 from t5x.examples.t5 import network
 
-# include "t5x/contrib/gpu/t5/t5_1_1/xl.gin"
-include "t5x/examples/scalable_t5/t5_1_1/xl.gin"
+include "t5x/contrib/gpu/t5/t5_1_1/xl.gin"
 include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
 include "t5x/contrib/gpu/t5/configs/runs/pretrain_pile.gin"
 
@@ -37,7 +36,7 @@ BATCH_SIZE = 2048
 USE_CACHED_TASKS=False
 
 trainer.Trainer:
-    num_microbatches = 32
+    num_microbatches = 64
 
 partitioning.PjitPartitioner:
     num_partitions=1
