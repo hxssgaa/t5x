@@ -20,7 +20,8 @@ from t5x import trainer
 from t5x.examples.t5 import network
 
 include "t5x/contrib/gpu/t5/t5_1_1/xl.gin"
-include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
+# include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
+from t5x import adafactor
 include "t5x/contrib/gpu/t5/configs/runs/pretrain_pile.gin"
 
 # Register necessary SeqIO Tasks/Mixtures.
@@ -36,11 +37,14 @@ BATCH_SIZE = 1024
 USE_CACHED_TASKS=False
 
 trainer.Trainer:
-    num_microbatches = 32
+    num_microbatches = 8
 
 partitioning.standard_logical_axis_rules:
     activation_partitioning_dims = 2
     parameter_partitioning_dims = 2 
 
 partitioning.PjitPartitioner:
-    model_parallel_submesh = (1, 1, 4, 1)
+    model_parallel_submesh = (1, 1, 2, 1)
+
+adafactor.Adafactor:
+  logical_factor_rules = @adafactor.standard_logical_factor_rules()
