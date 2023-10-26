@@ -39,4 +39,4 @@ trainer.Trainer:
     num_microbatches = 32
 
 partitioning.PjitPartitioner:
-    num_partitions=4
+    num_partitions=8
