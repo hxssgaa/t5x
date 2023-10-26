@@ -47,5 +47,5 @@ partitioning.standard_logical_axis_rules:
     parameter_partitioning_dims = 2
 
 partitioning.PjitPartitioner:
-    num_partitions = 2
+    num_partitions = 4
     # model_parallel_submesh = (1, 2, 4, 1)
