@@ -18,10 +18,9 @@ from t5x import partitioning
 from t5x import trainer
 
 from t5x.examples.t5 import network
-from t5x import adafactor
 
 include "t5x/contrib/gpu/t5/t5_1_1/xl.gin"
-# include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
+include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
 include "t5x/contrib/gpu/t5/configs/runs/pretrain_pile.gin"
 
 # Register necessary SeqIO Tasks/Mixtures.
@@ -45,6 +44,3 @@ partitioning.standard_logical_axis_rules:
 
 partitioning.PjitPartitioner:
     model_parallel_submesh = (1, 2, 4, 1)
-
-adafactor.Adafactor:
-  logical_factor_rules = @adafactor.standard_logical_factor_rules()
