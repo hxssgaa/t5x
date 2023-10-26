@@ -40,7 +40,7 @@ trainer.Trainer:
 
 partitioning.standard_logical_axis_rules:
     activation_partitioning_dims = 2
-    parameter_partitioning_dims = 2
+    parameter_partitioning_dims = 2 
 
 partitioning.PjitPartitioner:
-    model_parallel_submesh = (1, 2, 4, 1)
+    model_parallel_submesh = (1, 1, 4, 1)
