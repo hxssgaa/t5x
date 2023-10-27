@@ -15,7 +15,7 @@ utils.SaveCheckpointConfig:
 #  warmup_steps = 10000  # 10k to keep consistent with T5/MTF defaults.
 #  min_learning_rate = 0.00001
 #  decay_factor = 9.0909e-7
-utils.create_learning_rate_scheduler:
-  factors = 'constant * rsqrt_decay'
-  base_learning_rate = 0.01
-  warmup_steps = 10000  # 10k to keep consistent with T5/MTF defaults.
+#utils.create_learning_rate_scheduler:
+#  factors = 'constant * rsqrt_decay'
+#  base_learning_rate = 0.01
+#  warmup_steps = 10000  # 10k to keep consistent with T5/MTF defaults.
