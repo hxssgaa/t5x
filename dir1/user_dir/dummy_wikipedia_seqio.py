@@ -17,7 +17,7 @@ DEFAULT_OUTPUT_FEATURES = {
 # ================================ Wikipedia ===================================
 TaskRegistry.add(
     "wikipedia_dummy",
-    source=seqio.TfdsDataSource(tfds_name="c4/en:3.1.0"),
+    source=seqio.TfdsDataSource(tfds_name="wikipedia/20230601.en:1.0.0"),
     preprocessors=[
         functools.partial(
             preprocessors.rekey, key_map={
