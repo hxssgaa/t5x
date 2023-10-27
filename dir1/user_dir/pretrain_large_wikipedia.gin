@@ -41,7 +41,7 @@ BATCH_SIZE = 256
 USE_CACHED_TASKS=False
 
 trainer.Trainer:
-    num_microbatches = 1
+    num_microbatches = 2
 
 #partitioning.standard_logical_axis_rules:
 #    activation_partitioning_dims = 2
