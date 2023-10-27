@@ -21,8 +21,8 @@ from t5x import trainer
 
 from t5x.examples.t5 import network
 
-# include "t5x/contrib/gpu/t5/t5_1_1/xl.gin"
-include "dir1/user_dir/t5_1_1_xl.gin"
+include "t5x/contrib/gpu/t5/t5_1_1/xl.gin"
+# include "dir1/user_dir/t5_1_1_xl.gin"
 # include "dir1/user_dir/flash_attention.gin"
 include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
 include "t5x/contrib/gpu/t5/configs/runs/pretrain_pile.gin"
@@ -43,11 +43,11 @@ BATCH_SIZE = 256
 USE_CACHED_TASKS=False
 
 trainer.Trainer:
-    num_microbatches = 4
+    num_microbatches = 2
 
-partitioning.standard_logical_axis_rules:
-    activation_partitioning_dims = 2
-    parameter_partitioning_dims = 2
+#partitioning.standard_logical_axis_rules:
+#    activation_partitioning_dims = 2
+#    parameter_partitioning_dims = 2
 
 partitioning.PjitPartitioner:
     num_partitions = 2
