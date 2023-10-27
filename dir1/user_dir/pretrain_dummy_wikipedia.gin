@@ -14,8 +14,6 @@
 
 from __gin__ import dynamic_registration
 
-import flaxformer
-
 from t5x import partitioning
 from t5x import trainer
 
