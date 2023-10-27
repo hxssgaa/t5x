@@ -46,5 +46,5 @@ trainer.Trainer:
     num_microbatches = 0
 
 partitioning.PjitPartitioner:
-    num_partitions = 1
+    num_partitions = 2
     # model_parallel_submesh = (1, 2, 4, 1)
