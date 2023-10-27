@@ -32,7 +32,7 @@ import t5.data.mixtures
 # Register Dummy Wikipedia Seqio Task (needed for benchmarking)
 import dummy_wikipedia_seqio
 
-MIXTURE_OR_TASK_NAME = "c4_v220_span_corruption"
+MIXTURE_OR_TASK_NAME = "wikipedia_dummy"
 TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 114}
 TRAIN_STEPS = 80000
 DROPOUT_RATE = 0.0
