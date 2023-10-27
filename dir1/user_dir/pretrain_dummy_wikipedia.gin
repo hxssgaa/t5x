@@ -43,8 +43,12 @@ BATCH_SIZE = 256
 USE_CACHED_TASKS=False
 
 trainer.Trainer:
-    num_microbatches = 0
+    num_microbatches = 8
+
+partitioning.standard_logical_axis_rules:
+    activation_partitioning_dims = 2
+    parameter_partitioning_dims = 2
 
 partitioning.PjitPartitioner:
-    num_partitions = 4
+    num_partitions = 2
     # model_parallel_submesh = (1, 2, 4, 1)
