@@ -45,10 +45,6 @@ USE_CACHED_TASKS=False
 trainer.Trainer:
     num_microbatches = 0
 
-partitioning.standard_logical_axis_rules:
-    activation_partitioning_dims = 1
-    parameter_partitioning_dims = 1
-
 partitioning.PjitPartitioner:
     num_partitions = 1
     # model_parallel_submesh = (1, 2, 4, 1)
