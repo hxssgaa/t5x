@@ -41,7 +41,7 @@ adafactor.Adafactor.logical_factor_rules = @adafactor.standard_logical_factor_ru
 
 MIXTURE_OR_TASK_NAME = "wikipedia_dummy"
 TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 114}
-TRAIN_STEPS = 80000
+TRAIN_STEPS = 50000
 DROPOUT_RATE = 0.0
 LABEL_SMOOTHING = 0.0
 LOSS_NORMALIZING_FACTOR = None
