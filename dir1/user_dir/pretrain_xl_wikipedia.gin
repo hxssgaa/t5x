@@ -18,17 +18,26 @@ from t5x import partitioning
 from t5x import trainer
 
 from t5x.examples.t5 import network
+from t5x import adafactor
 
 include "t5x/contrib/gpu/t5/t5_1_1/xl.gin"
 # include "dir1/user_dir/t5_1_1_xl.gin"
 # include "dir1/user_dir/flash_attention.gin"
-include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
+# include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
 include "t5x/contrib/gpu/t5/configs/runs/pretrain_pile.gin"
 
 # Register necessary SeqIO Tasks/Mixtures.
 import t5.data.mixtures
 # Register Dummy Wikipedia Seqio Task (needed for benchmarking)
 import dummy_wikipedia_seqio
+
+# Optimizer
+# `learning_rate` is set by `Trainer.learning_rate_fn`.
+OPTIMIZER = @adafactor.Adafactor()
+adafactor.Adafactor:
+  decay_rate = 0.8
+  step_offset = 0
+adafactor.Adafactor.logical_factor_rules = @adafactor.standard_logical_factor_rules()
 
 MIXTURE_OR_TASK_NAME = "wikipedia_dummy"
 TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 114}
@@ -37,7 +46,7 @@ DROPOUT_RATE = 0.0
 LABEL_SMOOTHING = 0.0
 LOSS_NORMALIZING_FACTOR = None
 Z_LOSS = 0.0001
-BATCH_SIZE = 256
+BATCH_SIZE = 2048
 USE_CACHED_TASKS=False
 
 trainer.Trainer:
