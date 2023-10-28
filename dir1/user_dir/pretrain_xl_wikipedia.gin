@@ -37,6 +37,7 @@ OPTIMIZER = @adafactor.Adafactor()
 adafactor.Adafactor:
   decay_rate = 0.8
   step_offset = 0
+  dtype_momentum = "bfloat16"
 adafactor.Adafactor.logical_factor_rules = @adafactor.standard_logical_factor_rules()
 
 MIXTURE_OR_TASK_NAME = "wikipedia_dummy"
