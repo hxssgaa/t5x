@@ -16,7 +16,7 @@ MIXTURE_OR_TASK_NAME = "squad_v010_allanswers"
 MIXTURE_OR_TASK_MODULE = "t5.data.mixtures"
 TASK_FEATURE_LENGTHS = {"inputs": 956, "targets": 256}
 TRAIN_STEPS = 66_001
-LOSS_NORMALIZING_FACTOR = 262144
+# LOSS_NORMALIZING_FACTOR = 262144
 INITIAL_CHECKPOINT_PATH = None
 # Note that `DROPOUT_RATE = 0.1` is specified in the finetune.gin but we just
 # repeat to make it explicit.
