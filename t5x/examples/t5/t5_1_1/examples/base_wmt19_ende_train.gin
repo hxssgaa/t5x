@@ -7,6 +7,7 @@ from t5x import partitioning
 from t5x import trainer
 from t5x import utils
 from t5x.examples.t5 import network
+from t5.data import mixtures
 
 include "t5x/examples/t5/t5_1_1/base.gin"
 include "t5x/configs/runs/finetune.gin"
