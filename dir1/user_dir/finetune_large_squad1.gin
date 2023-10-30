@@ -6,19 +6,20 @@ from t5x import models
 from t5x import partitioning
 from t5x import trainer
 from t5x import utils
-from t5x import adafactor
+# from t5x import adafactor
 import t5x.contrib.gpu.scripts_gpu.seqio_tasks
 
 include "t5x/contrib/gpu/t5/t5_1_1/large.gin"
 include "t5x/contrib/gpu/t5/configs/runs/finetune_squad1.gin"
+include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
 
 # Optimizer
 # `learning_rate` is set by `Trainer.learning_rate_fn`.
-OPTIMIZER = @adafactor.Adafactor()
-adafactor.Adafactor:
-  decay_rate = 0.8
-  step_offset = 0
-  dtype_momentum = "bfloat16"
+#OPTIMIZER = @adafactor.Adafactor()
+#adafactor.Adafactor:
+#  decay_rate = 0.8
+#  step_offset = 0
+#  dtype_momentum = "bfloat16"
 
 MIXTURE_OR_TASK_NAME = "squad_v010_allanswers"
 TASK_FEATURE_LENGTHS = {"inputs": 956, "targets": 256}
