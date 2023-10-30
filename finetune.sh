@@ -25,6 +25,6 @@ T5X_DIR="/home/hxssgaa/t5x"  # directory where the T5X repo is cloned.
 python3 ${T5X_DIR}/t5x/train.py \
   --gin_file="t5x/examples/t5/t5_1_1/examples/base_wmt19_ende_train.gin" \
   --gin.MODEL_DIR=\"${MODEL_DIR}\" \
-  --gin.MIXTURE_OR_TASK_NAME=\"glue_mnli_v2\" \
+  --gin.MIXTURE_OR_TASK_NAME=\"squad_v010_allanswers\" \
   --gin.INITIAL_CHECKPOINT_PATH=\"gs://t5-data/pretrained_models/t5x/t5_1_1_large/checkpoint_1000000\" \
   --tfds_data_dir=${TFDS_DATA_DIR}
