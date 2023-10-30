@@ -53,7 +53,7 @@ utils.SaveCheckpointConfig:
   keep = 1
 
 # Decoder overrides
-models.EncoderDecoderModel.predict_batch_with_aux.num_decodes = 4
+# models.EncoderDecoderModel.predict_batch_with_aux.num_decodes = 4
 
 trainer.Trainer.num_microbatches = 2
 utils.create_learning_rate_scheduler.warmup_steps = 1000
