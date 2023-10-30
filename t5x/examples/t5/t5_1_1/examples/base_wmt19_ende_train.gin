@@ -49,7 +49,7 @@ train_script.train:
 
 utils.CheckpointConfig.restore = None
 utils.SaveCheckpointConfig:
-  period = 500  # checkpoint frequency
+  period = 3000  # checkpoint frequency
   keep = 1
 
 # Decoder overrides
