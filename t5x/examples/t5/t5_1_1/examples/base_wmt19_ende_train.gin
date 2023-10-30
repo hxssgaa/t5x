@@ -12,9 +12,9 @@ from t5.data import mixtures
 include "t5x/examples/t5/t5_1_1/large.gin"
 include "t5x/configs/runs/finetune.gin"
 
-MIXTURE_OR_TASK_NAME = "squad_v010_allanswers"
+MIXTURE_OR_TASK_NAME = "glue_mnli_v2"
 MIXTURE_OR_TASK_MODULE = "t5.data.mixtures"
-TASK_FEATURE_LENGTHS = {"inputs": 956, "targets": 256}
+TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 16}
 TRAIN_STEPS = 6000
 LABEL_SMOOTHING = 0.1
 LOSS_NORMALIZING_FACTOR = 262144
@@ -25,20 +25,32 @@ DROPOUT_RATE = 0.1
 
 train/utils.DatasetConfig:
   batch_size = 128
+  split = 'train'
   use_cached = False
   pack = True
   use_custom_packing_ops = False
   seed = 0
+  module = %MIXTURE_OR_TASK_MODULE
 
 train_eval/utils.DatasetConfig:
   batch_size = 128
+  split = 'validation_mismatched'
+  shuffle = False
+  seed = 42
   use_cached = False
   pack = False
   use_custom_packing_ops = False
-  seed = 0
+  module = %MIXTURE_OR_TASK_MODULE
 
 infer_eval/utils.DatasetConfig:
+  task_feature_lengths = None  # compute max
+  split = 'validation_matched'
+  batch_size = 128
+  shuffle = False
+  seed = 42
   use_cached = False
+  pack = False
+  module = %MIXTURE_OR_TASK_MODULE
 
 train_script.train:
   eval_period = 250
@@ -47,15 +59,11 @@ train_script.train:
   random_seed = 0
   use_hardware_rng = True
 
-utils.CheckpointConfig.restore = None
 utils.SaveCheckpointConfig:
   period = 3000  # checkpoint frequency
   keep = 1
 
-# Decoder overrides
-# models.EncoderDecoderModel.predict_batch_with_aux.num_decodes = 4
-
-trainer.Trainer.num_microbatches = 2
+trainer.Trainer.num_microbatches = None
 utils.create_learning_rate_scheduler.warmup_steps = 1000
 
 partitioning.PjitPartitioner:
