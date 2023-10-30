@@ -133,10 +133,10 @@ utils.CheckpointConfig:
 utils.RestoreCheckpointConfig:
   path = %INITIAL_CHECKPOINT_PATH
   #mode = 'specific'
-  dtype = 'float32'
+  dtype = 'bfloat16'
 utils.SaveCheckpointConfig:
   period = 5000
-  dtype = 'float32'
+  dtype = 'bfloat16'
   keep = None  # keep all checkpoints
   save_dataset = False  # don't checkpoint dataset state
 
