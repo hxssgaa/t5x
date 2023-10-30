@@ -12,4 +12,5 @@ python3 ${T5X_DIR}/t5x/train.py \
   --gin.ACTIVATION_DTYPE=\"${ACTIVATION_DTYPE}\" \
   --gin.network.T5Config.dtype=\"${ACTIVATION_DTYPE}\" \
   --gin.utils.RestoreCheckpointConfig.dtype=\"${ACTIVATION_DTYPE}\" \
+  --gin.INIT_CHECKPOINT=\"gs://t5-data/pretrained_models/t5x/t5_1_1_large/checkpoint_1000000\" \
   --gin.DROPOUT_RATE=0.1

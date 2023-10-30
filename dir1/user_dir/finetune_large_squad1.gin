@@ -23,7 +23,7 @@ include "t5x/contrib/gpu/t5/t5_1_1/adamw_opt.gin"
 
 MIXTURE_OR_TASK_NAME = "squad_v010_allanswers"
 TASK_FEATURE_LENGTHS = {"inputs": 956, "targets": 256}
-TRAIN_STEPS = 56_001  # 1000000 pre-trained steps + 6000 fine-tuning steps.
+TRAIN_STEPS = 1_006_001  # 1000000 pre-trained steps + 6000 fine-tuning steps.
 DROPOUT_RATE = 0.1
 BATCH_SIZE = 256
 INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_large/checkpoint_1000000" #"gs://hxtpu_bucket/t5_large_ada/checkpoint_50000"
