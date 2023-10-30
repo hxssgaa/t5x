@@ -15,7 +15,7 @@ include "t5x/configs/runs/finetune.gin"
 MIXTURE_OR_TASK_NAME = "squad_v010_allanswers"
 MIXTURE_OR_TASK_MODULE = "t5.data.mixtures"
 TASK_FEATURE_LENGTHS = {"inputs": 956, "targets": 256}
-TRAIN_STEPS = 6000
+TRAIN_STEPS = 1_006_001
 LOSS_NORMALIZING_FACTOR = 262144
 INITIAL_CHECKPOINT_PATH = None
 # Note that `DROPOUT_RATE = 0.1` is specified in the finetune.gin but we just
@@ -33,7 +33,7 @@ train/utils.DatasetConfig:
 
 train_eval/utils.DatasetConfig:
   batch_size = 128
-  split = 'validation_mismatched'
+  split = 'validation'
   shuffle = False
   seed = 42
   use_cached = False
@@ -43,7 +43,7 @@ train_eval/utils.DatasetConfig:
 
 infer_eval/utils.DatasetConfig:
   task_feature_lengths = None  # compute max
-  split = 'validation_matched'
+  split = 'validation'
   batch_size = 128
   shuffle = False
   seed = 42
