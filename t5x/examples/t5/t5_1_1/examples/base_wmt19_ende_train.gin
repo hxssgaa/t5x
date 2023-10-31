@@ -15,12 +15,12 @@ include "t5x/configs/runs/finetune.gin"
 MIXTURE_OR_TASK_NAME = "squad_v010_allanswers"
 MIXTURE_OR_TASK_MODULE = "t5.data.mixtures"
 TASK_FEATURE_LENGTHS = {"inputs": 956, "targets": 256}
-TRAIN_STEPS = 106_001
+TRAIN_STEPS = 30_001
 # LOSS_NORMALIZING_FACTOR = 262144
 INITIAL_CHECKPOINT_PATH = None
 # Note that `DROPOUT_RATE = 0.1` is specified in the finetune.gin but we just
 # repeat to make it explicit.
-DROPOUT_RATE = 0.1
+DROPOUT_RATE = 0.0
 
 train/utils.DatasetConfig:
   batch_size = 128
@@ -62,13 +62,14 @@ utils.SaveCheckpointConfig:
   period = 5000  # checkpoint frequency
   keep = 1
 
+utils.CheckpointConfig.restore = None
 trainer.Trainer.num_microbatches = None
 # utils.create_learning_rate_scheduler.warmup_steps = 1001000
 
 utils.create_learning_rate_scheduler:
   factors = 'constant * rsqrt_decay'
   base_learning_rate = 1.0
-  warmup_steps = 51000
+  warmup_steps = 1000
 
 partitioning.PjitPartitioner:
   num_partitions = 1
