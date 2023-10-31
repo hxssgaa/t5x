@@ -29,7 +29,7 @@ include "t5x/contrib/gpu/t5/configs/runs/pretrain_pile.gin"
 # Register necessary SeqIO Tasks/Mixtures.
 import t5.data.mixtures
 # Register Dummy Wikipedia Seqio Task (needed for benchmarking)
-import dummy_wikipedia_seqio
+import sea_corpus_seqio
 
 # Optimizer
 # `learning_rate` is set by `Trainer.learning_rate_fn`.
