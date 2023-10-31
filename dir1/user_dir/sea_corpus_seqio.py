@@ -22,7 +22,7 @@ TaskRegistry.add(
         functools.partial(
             preprocessors.rekey, key_map={
                 "inputs": None,
-                "targets": "text"
+                "targets": None
             }),
         seqio.preprocessors.tokenize,
         seqio.CacheDatasetPlaceholder(),
