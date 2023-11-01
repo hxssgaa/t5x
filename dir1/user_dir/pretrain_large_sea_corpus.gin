@@ -64,4 +64,5 @@ partitioning.PjitPartitioner:
     # model_parallel_submesh = (1, 2, 4, 1)
 
 utils.create_learning_rate_scheduler:
+    base_learning_rate = 1.0
     warmup_steps = 10000  # 10k to keep consistent with T5/MTF defaults.
