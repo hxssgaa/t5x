@@ -16,7 +16,7 @@ DEFAULT_OUTPUT_FEATURES = {
 
 @seqio.map_over_dataset
 def _process1(x):
-    return {'inputs': None, 'targets': x}
+    return {'text': x}
 
 # ================================ Wikipedia ===================================
 TaskRegistry.add(
@@ -24,11 +24,11 @@ TaskRegistry.add(
     source=seqio.TextLineDataSource({'train': 'gs://hxtpu_bucket/sea_corpus/train_massive_filter.txt'}), #"wikipedia/20230601.en:1.0.0"),
     preprocessors=[
         _process1,
-        # functools.partial(
-        #     preprocessors.rekey, key_map={
-        #         "inputs": None,
-        #         "targets": None
-        #     }),
+        functools.partial(
+            preprocessors.rekey, key_map={
+                "inputs": None,
+                "targets": "text"
+            }),
         seqio.preprocessors.tokenize,
         seqio.CacheDatasetPlaceholder(),
         preprocessors.span_corruption,
