@@ -58,6 +58,7 @@ train_script.train:
   eval_period = 1000
   random_seed = %RANDOM_SEED
   use_hardware_rng = %USE_HARDWARE_RNG
+  run_eval_before_training = %RUN_EVAL_BEFORE_TRAINING
   summarize_config_fn = @gin_utils.summarize_gin_config
 
 partitioning.PjitPartitioner:

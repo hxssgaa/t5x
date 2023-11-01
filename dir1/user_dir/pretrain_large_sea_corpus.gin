@@ -51,6 +51,7 @@ LOSS_NORMALIZING_FACTOR = None
 Z_LOSS = 0.0001
 BATCH_SIZE = 2048
 USE_CACHED_TASKS=False
+RUN_EVAL_BEFORE_TRAINING = True
 
 trainer.Trainer:
     num_microbatches = 2
