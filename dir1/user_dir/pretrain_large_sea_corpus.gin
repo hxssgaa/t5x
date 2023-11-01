@@ -19,6 +19,7 @@ from t5x import trainer
 
 from t5x.examples.t5 import network
 from t5x import adafactor
+from t5x import utils
 
 include "t5x/contrib/gpu/t5/t5_1_1/large.gin"
 # include "dir1/user_dir/t5_1_1_xl.gin"
@@ -42,8 +43,8 @@ adafactor.Adafactor.logical_factor_rules = @adafactor.standard_logical_factor_ru
 
 MIXTURE_OR_TASK_NAME = "sea_corpus"
 TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 114}
-%INITIAL_CHECKPOINT_PATH = []
-TRAIN_STEPS = 50000
+INITIAL_CHECKPOINT_PATH = []
+TRAIN_STEPS = 1180000
 DROPOUT_RATE = 0.0
 LABEL_SMOOTHING = 0.0
 LOSS_NORMALIZING_FACTOR = None
@@ -61,3 +62,6 @@ trainer.Trainer:
 partitioning.PjitPartitioner:
     num_partitions = 1
     # model_parallel_submesh = (1, 2, 4, 1)
+
+utils.create_learning_rate_scheduler:
+    warmup_steps = 1110000  # 10k to keep consistent with T5/MTF defaults.
