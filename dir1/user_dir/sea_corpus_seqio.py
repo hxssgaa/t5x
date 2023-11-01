@@ -14,10 +14,9 @@ DEFAULT_OUTPUT_FEATURES = {
         vocabulary=t5.data.get_default_vocabulary(), add_eos=True)
 }
 
+@seqio.map_over_dataset
 def _process1(x):
-    print('start _process 1')
-    y = next(iter(x))
-    import pdb; pdb.set_trace()
+    return {'inputs': None, 'targets': x}
 
 # ================================ Wikipedia ===================================
 TaskRegistry.add(
@@ -25,13 +24,13 @@ TaskRegistry.add(
     source=seqio.TextLineDataSource({'train': 'gs://hxtpu_bucket/sea_corpus/train_massive_filter.txt'}), #"wikipedia/20230601.en:1.0.0"),
     preprocessors=[
         _process1,
-        functools.partial(
-            preprocessors.rekey, key_map={
-                "inputs": None,
-                "targets": None
-            }),
+        # functools.partial(
+        #     preprocessors.rekey, key_map={
+        #         "inputs": None,
+        #         "targets": None
+        #     }),
         seqio.preprocessors.tokenize,
-        # seqio.CacheDatasetPlaceholder(),
+        seqio.CacheDatasetPlaceholder(),
         preprocessors.span_corruption,
     ],
     output_features=DEFAULT_OUTPUT_FEATURES,
