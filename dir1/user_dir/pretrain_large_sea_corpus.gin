@@ -44,7 +44,7 @@ adafactor.Adafactor.logical_factor_rules = @adafactor.standard_logical_factor_ru
 MIXTURE_OR_TASK_NAME = "wikipedia_dummy"
 TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 114}
 INITIAL_CHECKPOINT_PATH = []
-TRAIN_STEPS = 80000
+TRAIN_STEPS = 1_080_001
 DROPOUT_RATE = 0.0
 LABEL_SMOOTHING = 0.0
 LOSS_NORMALIZING_FACTOR = None
@@ -55,14 +55,10 @@ USE_CACHED_TASKS=False
 trainer.Trainer:
     num_microbatches = 2
 
-#partitioning.standard_logical_axis_rules:
-#    activation_partitioning_dims = 2
-#    parameter_partitioning_dims = 2
-
 partitioning.PjitPartitioner:
     num_partitions = 1
     # model_parallel_submesh = (1, 2, 4, 1)
 
 utils.create_learning_rate_scheduler:
     base_learning_rate = 1.0
-    warmup_steps = 10000  # 10k to keep consistent with T5/MTF defaults.
+    warmup_steps = 1010000  # 10k to keep consistent with T5/MTF defaults.
