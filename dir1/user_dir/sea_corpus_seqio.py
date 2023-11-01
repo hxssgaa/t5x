@@ -14,8 +14,9 @@ DEFAULT_OUTPUT_FEATURES = {
         vocabulary=t5.data.get_default_vocabulary(), add_eos=True)
 }
 
-def _process1(*x):
+def _process1(x):
     print('start _process 1')
+    y = next(iter(x))
     import pdb; pdb.set_trace()
 
 # ================================ Wikipedia ===================================
