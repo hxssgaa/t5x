@@ -19,13 +19,13 @@ TaskRegistry.add(
     "sea_corpus",
     source=seqio.TextLineDataSource({'train': 'gs://hxtpu_bucket/sea_corpus/train_massive_filter.txt'}), #"wikipedia/20230601.en:1.0.0"),
     preprocessors=[
-        # functools.partial(
-        #     preprocessors.rekey, key_map={
-        #         "inputs": None,
-        #         "targets": None
-        #     }),
+        functools.partial(
+            preprocessors.rekey, key_map={
+                "inputs": None,
+                "targets": None
+            }),
         seqio.preprocessors.tokenize,
-        seqio.CacheDatasetPlaceholder(),
+        # seqio.CacheDatasetPlaceholder(),
         preprocessors.span_corruption,
     ],
     output_features=DEFAULT_OUTPUT_FEATURES,
