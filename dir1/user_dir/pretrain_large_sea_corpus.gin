@@ -30,7 +30,7 @@ include "t5x/contrib/gpu/t5/configs/runs/pretrain_pile.gin"
 # Register necessary SeqIO Tasks/Mixtures.
 import t5.data.mixtures
 # Register Dummy Wikipedia Seqio Task (needed for benchmarking)
-import sea_corpus_seqio
+import dummy_wikipedia_seqio
 
 # Optimizer
 # `learning_rate` is set by `Trainer.learning_rate_fn`.
@@ -41,7 +41,7 @@ adafactor.Adafactor:
   dtype_momentum = "bfloat16"
 adafactor.Adafactor.logical_factor_rules = @adafactor.standard_logical_factor_rules()
 
-MIXTURE_OR_TASK_NAME = "sea_corpus"
+MIXTURE_OR_TASK_NAME = "wikipedia_dummy"
 TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 114}
 INITIAL_CHECKPOINT_PATH = []
 TRAIN_STEPS = 80000
