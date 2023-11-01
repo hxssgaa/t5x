@@ -91,7 +91,9 @@ utils.CheckpointConfig:
   restore = @utils.RestoreCheckpointConfig()
   save = @utils.SaveCheckpointConfig()
 utils.RestoreCheckpointConfig:
-  path = []  # initialize from scratch
+  path = %INITIAL_CHECKPOINT_PATH  # initialize from scratch
+  mode = 'specific'
+  dtype = 'float32'
 utils.SaveCheckpointConfig:
   period = 1000
   dtype = 'float32'
