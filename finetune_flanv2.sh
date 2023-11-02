@@ -1,8 +1,7 @@
-MODEL_DIR="gs://hxtpu_bucket/flan_t5_large_sea_ada"
 PROJECT_DIR=${HOME}"/t5x/dir1/user_dir"
-# Data dir to save the processed dataset in "gs://data_dir" format.
-TFDS_DATA_DIR="/home/hxssgaa/tensorflow_datasets"
-T5X_DIR="/home/hxssgaa/t5x"  # directory where the T5X repo is cloned.
+T5X_DIR="/home/hxssgaa/t5x"  # directory where the t5x is cloned.
+TFDS_DATA_DIR="/home/hxssgaa/data"
+MODEL_DIR="gs://hxtpu_bucket/flan_t5_large_sea_ada"
 ACTIVATION_DTYPE=bfloat16
 export PYTHONPATH=${PROJECT_DIR}
 
