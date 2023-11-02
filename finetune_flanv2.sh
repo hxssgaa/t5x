@@ -6,6 +6,7 @@ ACTIVATION_DTYPE=bfloat16
 export PYTHONPATH=${PROJECT_DIR}
 
 python3 ${T5X_DIR}/t5x/train.py \
+  --gin_search_paths=${PROJECT_DIR} \
   --gin_file="finetune_large_flan2.gin" \
   --gin.MODEL_DIR=\"${MODEL_DIR}\" \
   --gin.MIXTURE_OR_TASK_NAME=\"flan2022_submix\" \
