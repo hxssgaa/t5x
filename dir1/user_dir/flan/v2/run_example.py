@@ -77,13 +77,13 @@ seqio.MixtureRegistry.add(
 ##### See 3 Examples of Mixtures or Submixtures you can try
 ##############################################################
 # 1. Example use cases to use just the chain-of-thought zero-shot data:
-selected_mixture = seqio.get_mixture_or_task('cot_zsopt')
+# selected_mixture = seqio.get_mixture_or_task('cot_zsopt')
 
 # 2. Example use cases to use just all chain-of-thought templates together:
 # selected_mixture = seqio.get_mixture_or_task('cot_submix')
 
 # 3. Example use cases to use the full Flan Collection:
-# selected_mixture = seqio.get_mixture_or_task('flan2022_submix')
+selected_mixture = seqio.get_mixture_or_task('flan2022_submix')
 # This last one (the final Flan Collection mixture) may take too long to run if not
 # cached. We suggest starting by caching each of:
 # `cot_submix`, `flan2021_submix`, `dialog_submix`, `t0_submix`, `niv2_submix`.
