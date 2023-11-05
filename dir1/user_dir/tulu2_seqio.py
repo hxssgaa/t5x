@@ -4,6 +4,7 @@ import seqio
 import t5.data
 import json
 import jax
+import tensorflow as tf
 from t5.data import preprocessors
 
 TaskRegistry = seqio.TaskRegistry
@@ -23,7 +24,10 @@ def _process1(x):
 # ================================ Wikipedia ===================================
 TaskRegistry.add(
     "tulu_v2",
-    source=seqio.TfdsDataSource(tfds_data_dir='gs://hxtpu_bucket/tulu_tf_datasets'), #"wikipedia/20230601.en:1.0.0"),
+    source=seqio.TFExampleDataSource({'train': 'gs://hxtpu_bucket/tulu_tf_datasets/tulu_v2-train.tfrecord-00000-of-00001'}, feature_description={
+        'inputs': tf.io.VarLenFeature(tf.string),
+        'targets': tf.io.VarLenFeature(tf.string),
+    }),
     preprocessors=[
         # _process1,
         # functools.partial(
