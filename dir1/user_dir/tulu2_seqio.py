@@ -3,6 +3,7 @@ import functools
 import seqio
 import t5.data
 import json
+import jax
 from t5.data import preprocessors
 
 TaskRegistry = seqio.TaskRegistry
@@ -17,7 +18,7 @@ DEFAULT_OUTPUT_FEATURES = {
 
 @seqio.map_over_dataset
 def _process1(x):
-    import pdb; pdb.set_trace()
+    jax.debug.breakpoint()
     return json.loads(x)
 
 # ================================ Wikipedia ===================================
