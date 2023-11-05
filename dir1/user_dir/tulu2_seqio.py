@@ -18,8 +18,7 @@ DEFAULT_OUTPUT_FEATURES = {
 
 @seqio.map_over_dataset
 def _process1(x):
-    import pdb; pdb.set_trace()
-    return json.loads(x)
+    return {'text': x}
 
 # ================================ Wikipedia ===================================
 TaskRegistry.add(
@@ -29,8 +28,8 @@ TaskRegistry.add(
         _process1,
         functools.partial(
             preprocessors.rekey, key_map={
-                "inputs": "inputs",
-                "targets": "targets"
+                "inputs": None,
+                "targets": "text"
             }),
         seqio.preprocessors.tokenize,
         seqio.CacheDatasetPlaceholder()
