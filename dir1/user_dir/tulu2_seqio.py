@@ -18,7 +18,7 @@ DEFAULT_OUTPUT_FEATURES = {
 
 @seqio.map_over_dataset
 def _process1(x):
-    jax.debug.breakpoint()
+    import pdb; pdb.set_trace()
     return json.loads(x)
 
 # ================================ Wikipedia ===================================
