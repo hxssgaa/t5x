@@ -33,6 +33,9 @@ trainer.Trainer:
 train_script.train:
   eval_period = 8000
 
+utils.SaveCheckpointConfig:
+  period = 8000
+
 partitioning.PjitPartitioner:
   num_partitions = 1
 
