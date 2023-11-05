@@ -5,6 +5,7 @@ import t5.data
 import json
 import jax
 import tensorflow as tf
+from t5.evaluation import metrics
 from t5.data import preprocessors
 
 TaskRegistry = seqio.TaskRegistry
@@ -31,13 +32,9 @@ TaskRegistry.add(
     }),
     preprocessors=[
         _process1,
-        # functools.partial(
-        #     preprocessors.rekey, key_map={
-        #         "inputs": None,
-        #         "targets": "text"
-        #     }),
         seqio.preprocessors.tokenize,
-        seqio.CacheDatasetPlaceholder()
+        seqio.CacheDatasetPlaceholder(),
+        seqio.preprocessors.append_eos_after_trim,
     ],
     output_features=DEFAULT_OUTPUT_FEATURES,
-    metric_fns=[])
+    metric_fns=[metrics.bleu])
