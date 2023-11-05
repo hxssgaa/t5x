@@ -132,8 +132,8 @@ utils.CheckpointConfig:
   save = @utils.SaveCheckpointConfig()
 utils.RestoreCheckpointConfig:
   path = %INITIAL_CHECKPOINT_PATH
-  #mode = 'specific'
-  dtype = 'bfloat16'
+  mode = 'specific'
+  dtype = 'float32'
 utils.SaveCheckpointConfig:
   period = 5000
   dtype = 'bfloat16'
