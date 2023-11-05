@@ -24,7 +24,7 @@ TaskRegistry.add(
     "tulu_v2",
     source=seqio.TextLineDataSource({'train': 'gs://hxtpu_bucket/inst_tuning/t5_tulu_v2_data.jsonl'}), #"wikipedia/20230601.en:1.0.0"),
     preprocessors=[
-        _process1,
+        # _process1,
         functools.partial(
             preprocessors.rekey, key_map={
                 "inputs": "inputs",
