@@ -19,7 +19,8 @@ DEFAULT_OUTPUT_FEATURES = {
 
 @seqio.map_over_dataset
 def _process1(x):
-    return {'text': x}
+    return {'inputs': x['inputs'].values[0], 'targets': x['targets'].values[0]}
+
 
 # ================================ Wikipedia ===================================
 TaskRegistry.add(
@@ -29,7 +30,7 @@ TaskRegistry.add(
         'targets': tf.io.VarLenFeature(tf.string),
     }),
     preprocessors=[
-        # _process1,
+        _process1,
         # functools.partial(
         #     preprocessors.rekey, key_map={
         #         "inputs": None,
