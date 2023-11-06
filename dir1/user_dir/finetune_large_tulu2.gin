@@ -22,7 +22,7 @@ adafactor.Adafactor:
 
 MIXTURE_OR_TASK_NAME = "tulu_v2"
 TASK_FEATURE_LENGTHS = {"inputs": 2056, "targets": 512}
-TRAIN_STEPS = 1_244_001  # 1100001 pre-trained steps + 80000 SEA pretraining steps + 64000 fine-tuning steps.
+TRAIN_STEPS = 1_212_001  # 1100001 pre-trained steps + 80000 SEA pretraining steps + 64000 fine-tuning steps.
 DROPOUT_RATE = 0.05
 BATCH_SIZE = 64
 INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_large/checkpoint_1000000" #"gs://hxtpu_bucket/t5_large_ada/checkpoint_50000"
@@ -31,10 +31,10 @@ trainer.Trainer:
   num_microbatches = 1
 
 train_script.train:
-  eval_period = 8000
+  eval_period = 5000
 
 utils.SaveCheckpointConfig:
-  period = 8000
+  period = 5000
 
 partitioning.PjitPartitioner:
   num_partitions = 1
