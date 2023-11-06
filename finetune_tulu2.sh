@@ -13,7 +13,7 @@ python3 ${T5X_DIR}/t5x/train.py \
   --gin.ACTIVATION_DTYPE=\"${ACTIVATION_DTYPE}\" \
   --gin.network.T5Config.dtype=\"${ACTIVATION_DTYPE}\" \
   --gin.utils.RestoreCheckpointConfig.dtype=\"${ACTIVATION_DTYPE}\" \
-  --gin.INITIAL_CHECKPOINT_PATH=\"gs://t5-data/pretrained_models/t5x/t5_1_1_lm100k_large/checkpointt5-data/pretrained_models/t5x/t5_1_1_lm100k_large/checkpoint_1100000\" \
+  --gin.INITIAL_CHECKPOINT_PATH=\"gs://t5-data/pretrained_models/t5x/t5_1_1_lm100k_large/checkpoint_1100000\" \
   --gin.DROPOUT_RATE=0.05
 
 # gs://hxtpu_bucket/t5_large_sea_ada/checkpoint_1180001
