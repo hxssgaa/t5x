@@ -22,7 +22,8 @@ adafactor.Adafactor:
 
 MIXTURE_OR_TASK_NAME = "tulu_v2"
 TASK_FEATURE_LENGTHS = {"inputs": 2056, "targets": 512}
-TRAIN_STEPS = 1_212_001  # 1100001 pre-trained steps + 80000 SEA pretraining steps + 64000 fine-tuning steps.
+# TRAIN_STEPS = 1_212_001  # 1100001 pre-trained steps + 80000 SEA pretraining steps + 32000 fine-tuning steps.
+TRAIN_STEPS = 1_196_001  # 1164000 pre-trained step + 32000 fine-tuning steps.
 DROPOUT_RATE = 0.05
 BATCH_SIZE = 64
 INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_large/checkpoint_1000000" #"gs://hxtpu_bucket/t5_large_ada/checkpoint_50000"
