@@ -2,6 +2,7 @@ import argparse
 import collections
 
 import torch
+import numpy as np
 from flax import traverse_util
 from t5x import checkpoints
 
@@ -127,7 +128,7 @@ def convert_t5x_to_pytorch(variables: dict, *, num_layers: int, is_encoder_only:
 def make_state_dict(converted_params, is_encoder_only: bool):
     """Prepares a state dict for the PyTorch model."""
     # Make a state dict with torch tensors.
-    state_dict = collections.OrderedDict([(k, torch.from_numpy(v.copy())) for (k, v) in converted_params.items()])
+    state_dict = collections.OrderedDict([(k, torch.from_numpy(np.array(v.copy(), dtype=np.float32))) for (k, v) in converted_params.items()])
 
     # Add what is missing.
     if "encoder.embed_tokens.weight" not in state_dict:
