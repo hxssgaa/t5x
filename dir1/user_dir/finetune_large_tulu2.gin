@@ -25,11 +25,11 @@ TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 512}
 TRAIN_STEPS = 1_256_001  # 1164000 pre-trained steps + 92000 SEA pretraining steps
 # TRAIN_STEPS = 1_132_001  # 1100000 pre-trained step + 32000 fine-tuning steps.
 DROPOUT_RATE = 0.05
-BATCH_SIZE = 1024
+BATCH_SIZE = 2048
 INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_large/checkpoint_1000000" #"gs://hxtpu_bucket/t5_large_ada/checkpoint_50000"
 
 trainer.Trainer:
-  num_microbatches = 2
+  num_microbatches = 1
 
 train_script.train:
   eval_period = 1000
