@@ -27,6 +27,7 @@ TRAIN_STEPS = 1_256_001  # 1164000 pre-trained steps + 92000 SEA pretraining ste
 DROPOUT_RATE = 0.05
 BATCH_SIZE = 2048
 EVAL_BATCH_SIZE = 64
+RUN_EVAL_BEFORE_TRAINING = True
 INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_large/checkpoint_1000000" #"gs://hxtpu_bucket/t5_large_ada/checkpoint_50000"
 
 trainer.Trainer:
