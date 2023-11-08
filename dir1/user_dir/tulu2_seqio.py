@@ -4,11 +4,13 @@ import seqio
 import t5.data
 import json
 import jax
+import sea_corpus_seqio
 import tensorflow as tf
 from t5.evaluation import metrics
 from t5.data import preprocessors
 
 TaskRegistry = seqio.TaskRegistry
+MixtureRegistry = seqio.MixtureRegistry
 
 DEFAULT_OUTPUT_FEATURES = {
     "inputs": seqio.Feature(
@@ -39,3 +41,11 @@ TaskRegistry.add(
     ],
     output_features=DEFAULT_OUTPUT_FEATURES,
     metric_fns=[metrics.bleu])
+
+
+MixtureRegistry.add(
+    'sea_flan',
+    tasks=[
+        ('tulu_v2', 0.1),  # mixing weight = 10%
+        ('sea_corpus', 0.9),       # mixing weight = 90%
+    ])
