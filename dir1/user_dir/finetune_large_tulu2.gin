@@ -42,6 +42,10 @@ utils.SaveCheckpointConfig:
 partitioning.PjitPartitioner:
   num_partitions = 1
 
+#utils.create_learning_rate_scheduler:
+#  factors = 'constant'
+#  base_learning_rate = 0.0005
+
 utils.create_learning_rate_scheduler:
-  factors = 'constant'
-  base_learning_rate = 0.0005
+    base_learning_rate = 1.0
+    warmup_steps = 1110000  # 10k to keep consistent with T5/MTF defaults.

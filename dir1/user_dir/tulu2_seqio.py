@@ -25,6 +25,13 @@ def _process1(x):
     return {'inputs': x['inputs'].values[0], 'targets': x['targets'].values[0]}
 
 
+def _postprocess(answer):
+    if answer:
+        return answer.lower()[:5].replace('(', '').replace(')', '')[0]
+    else:
+        return answer
+
+
 # ================================ Wikipedia ===================================
 TaskRegistry.add(
     "tulu_v2",
@@ -39,8 +46,9 @@ TaskRegistry.add(
         seqio.CacheDatasetPlaceholder(),
         seqio.preprocessors.append_eos_after_trim,
     ],
+    postprocess_fn=_postprocess,
     output_features=DEFAULT_OUTPUT_FEATURES,
-    metric_fns=[metrics.bleu])
+    metric_fns=[metrics.squad])
 
 
 MixtureRegistry.add(
