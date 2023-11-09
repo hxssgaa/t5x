@@ -46,7 +46,6 @@ TaskRegistry.add(
         seqio.CacheDatasetPlaceholder(),
         seqio.preprocessors.append_eos_after_trim,
     ],
-    postprocess_fn=_postprocess,
     output_features=DEFAULT_OUTPUT_FEATURES,
     metric_fns=[metrics.squad])
 
