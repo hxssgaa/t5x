@@ -43,7 +43,7 @@ partitioning.PjitPartitioner:
   num_partitions = 1
 
 utils.create_learning_rate_scheduler:
-  factors = 'constant'
+  factors = 'linear_decay'
   base_learning_rate = 0.0005
   warmup_steps = 1169000
   min_learning_rate=0.00001
