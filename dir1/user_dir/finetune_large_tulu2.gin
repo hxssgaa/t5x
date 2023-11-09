@@ -44,7 +44,7 @@ partitioning.PjitPartitioner:
 
 utils.create_learning_rate_scheduler:
   factors = 'constant'
-  base_learning_rate = 0.0003
+  base_learning_rate = 0.0005
 
 #utils.create_learning_rate_scheduler:
 #    base_learning_rate = 1.0
