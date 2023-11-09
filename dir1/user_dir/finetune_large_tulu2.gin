@@ -47,6 +47,7 @@ utils.create_learning_rate_scheduler:
   base_learning_rate = 0.0005
   warmup_steps = 1169000
   min_learning_rate=0.00001
+  decay_factor = 3.75e-5
 
 #utils.create_learning_rate_scheduler:
 #    base_learning_rate = 1.0
