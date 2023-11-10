@@ -36,7 +36,7 @@ train_script.train:
   eval_period = 500
 
 utils.SaveCheckpointConfig:
-  period = 2000
+  period = 1000
 
 partitioning.PjitPartitioner:
   num_partitions = 1
