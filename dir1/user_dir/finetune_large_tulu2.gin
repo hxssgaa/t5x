@@ -34,7 +34,7 @@ trainer.Trainer:
   num_microbatches = 2
 
 train_script.train:
-  eval_period = 250
+  eval_period = 500
 
 utils.SaveCheckpointConfig:
   period = 2000
