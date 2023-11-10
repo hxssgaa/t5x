@@ -1,0 +1,50 @@
+from __gin__ import dynamic_registration
+
+import __main__ as train_script
+import tulu2_seqio
+from t5x import models
+from t5x import partitioning
+from t5x import trainer
+from t5x import utils
+from t5x import adafactor
+import t5x.contrib.gpu.scripts_gpu.seqio_tasks
+
+include "t5x/contrib/gpu/t5/t5_1_1/xl.gin"
+include "t5x/contrib/gpu/t5/configs/runs/finetune_squad1.gin"
+
+# Optimizer
+# `learning_rate` is set by `Trainer.learning_rate_fn`.
+OPTIMIZER = @adafactor.Adafactor()
+adafactor.Adafactor:
+  decay_rate = 0.8
+  step_offset = 0
+  dtype_momentum = "bfloat16"
+
+MIXTURE_OR_TASK_NAME = "sea_flan"
+TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 512}
+TRAIN_STEPS = 1_202_001  # 1138000 pre-trained steps + 64000 SEA pretraining steps
+DROPOUT_RATE = 0.05
+BATCH_SIZE = 2048
+EVAL_BATCH_SIZE = 256
+RUN_EVAL_BEFORE_TRAINING = True
+INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_large/checkpoint_1000000" #"gs://hxtpu_bucket/t5_large_ada/checkpoint_50000"
+
+trainer.Trainer:
+  num_microbatches = 4
+
+train_script.train:
+  eval_period = 500
+
+utils.SaveCheckpointConfig:
+  period = 2000
+
+partitioning.PjitPartitioner:
+  num_partitions = 1
+
+utils.create_learning_rate_scheduler:
+  factors = 'constant'
+  base_learning_rate = 0.0005
+
+#utils.create_learning_rate_scheduler:
+#    base_learning_rate = 1.0
+#    warmup_steps = 1110000  # 10k to keep consistent with T5/MTF defaults.
