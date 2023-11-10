@@ -30,7 +30,7 @@ RUN_EVAL_BEFORE_TRAINING = True
 INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_large/checkpoint_1000000" #"gs://hxtpu_bucket/t5_large_ada/checkpoint_50000"
 
 trainer.Trainer:
-  num_microbatches = 4
+  num_microbatches = 8
 
 train_script.train:
   eval_period = 500
