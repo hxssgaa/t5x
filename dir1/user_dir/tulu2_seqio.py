@@ -53,6 +53,6 @@ TaskRegistry.add(
 MixtureRegistry.add(
     'sea_flan',
     tasks=[
-        ('tulu_v2', 0.05),  # mixing weight = 1%
-        ('sea_corpus', 0.95),       # mixing weight = 99%
+        ('tulu_v2', 0.01),  # mixing weight = 1%
+        ('sea_corpus', 0.99),       # mixing weight = 99%
     ])
