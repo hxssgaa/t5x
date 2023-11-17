@@ -35,7 +35,7 @@ def _postprocess(answer):
 # ================================ Wikipedia ===================================
 TaskRegistry.add(
     "tulu_v2",
-    source=seqio.TFExampleDataSource({'train': 'gs://hxtpu_bucket/tulu_tf_datasets/flan_v2-train.tfrecord-00000-of-00001',
+    source=seqio.TFExampleDataSource({'train': 'gs://hxtpu_bucket/tulu_tf_datasets/tulu_v2-train.tfrecord-00000-of-00001',
                                       'validation': ['gs://hxtpu_bucket/tulu_tf_datasets/sgeval_v2-validation.tfrecord-00000-of-00001']}, feature_description={
         'inputs': tf.io.VarLenFeature(tf.string),
         'targets': tf.io.VarLenFeature(tf.string),
@@ -53,6 +53,6 @@ TaskRegistry.add(
 MixtureRegistry.add(
     'sea_flan',
     tasks=[
-        ('tulu_v2', 0.01),  # mixing weight = 1%
-        ('sea_corpus', 0.99),       # mixing weight = 99%
+        ('tulu_v2', 0.05),  # mixing weight = 1%
+        ('sea_corpus', 0.95),       # mixing weight = 99%
     ])

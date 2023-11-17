@@ -22,8 +22,7 @@ adafactor.Adafactor:
 
 MIXTURE_OR_TASK_NAME = "sea_flan"
 TASK_FEATURE_LENGTHS = {"inputs": 512, "targets": 512}
-TRAIN_STEPS = 1_256_001  # 1164000 pre-trained steps + 92000 SEA pretraining steps
-# TRAIN_STEPS = 1_132_001  # 1100000 pre-trained step + 32000 fine-tuning steps.
+TRAIN_STEPS = 1_228_001  # 1164000 pre-trained steps + 64000 SEA pretraining steps
 DROPOUT_RATE = 0.05
 BATCH_SIZE = 2048
 EVAL_BATCH_SIZE = 256
@@ -34,10 +33,10 @@ trainer.Trainer:
   num_microbatches = 2
 
 train_script.train:
-  eval_period = 500
+  eval_period = 1000
 
 utils.SaveCheckpointConfig:
-  period = 2000
+  period = 1000
 
 partitioning.PjitPartitioner:
   num_partitions = 1
